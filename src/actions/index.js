@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_STUDENTS } from 'actions/types';
+import { FETCH_STUDENTS, FILTER_STUDENTS } from 'actions/types';
 
 const { REACT_APP_API_BASE_URL } = process.env;
 
@@ -10,4 +10,11 @@ export const fetchStudents = () => async dispatch => {
     type: FETCH_STUDENTS,
     payload: data
   });
-}
+};
+
+export const filterStudents = text => {
+  return {
+    type: FILTER_STUDENTS,
+    payload: text
+  }
+};
