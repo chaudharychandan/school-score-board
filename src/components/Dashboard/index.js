@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 import { getTotalMarks } from 'utils';
@@ -7,10 +7,16 @@ import { NAME, ASC } from 'constants/index';
 import './Dashboard.css';
 
 import Card from 'components/Card';
+import Header from 'components/Header';
 
 class Dashboard extends Component {
+  state = {
+    loading: true
+  };
+
   componentDidMount() {
     this.props.fetchStudents();
+    this.setState({ loading: false });
   }
 
   renderStudentCards = () => {
@@ -62,10 +68,23 @@ class Dashboard extends Component {
   }
 
   render() {
+    const { loading } = this.state;
+
+    if (loading) {
+      return (
+        <div className="loader-container">
+          <div className="loader"></div>
+        </div>
+      );
+    }
+
     return (
-      <div className="dashboard">
-        { this.renderStudentCards() }
-      </div>
+      <Fragment>
+        <Header />
+        <div className="dashboard">
+          { this.renderStudentCards() }
+        </div>
+      </Fragment>
     );
   }
 }

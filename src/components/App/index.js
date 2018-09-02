@@ -1,13 +1,15 @@
 import React from 'react';
-import Header from 'components/Header';
+import Dashboard from 'components/Dashboard';
+import Student from 'components/Student';
+import { Route } from 'react-router-dom';
 
 import './App.css';
 
-export default ({children}) => {
+export default () => {
   return (
     <div>
-      <Header />
-      {children}
+      <Route path="/" exact component={Dashboard} />
+      <Route path="/:id" exact component={Student} />
     </div>
   );
 }
