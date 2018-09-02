@@ -34,6 +34,10 @@ class Dashboard extends Component {
       studentList = this.sortStudents(studentList, sort);
     }
 
+    if (studentList.length === 0) {
+      return <div>No Results</div>;
+    }
+
     return studentList.map((student) => {
       return (
         <div className="card-container" key={student.rollNo}>
