@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -20,15 +20,18 @@ class Student extends Component {
 
   render() {
     const { student } = this.state;
-    if (!student) {
-      return null;
-    }
 
     return (
       <div className="student-details">
         <Link to="/">DashBoard</Link>
-        <BarChart data={student} />
-        <Marksheet data={student} />
+        { student ?
+          (
+            <Fragment>
+              <BarChart data={student} />
+              <Marksheet data={student} />
+            </Fragment>
+          ) : null
+        }
       </div>
     );
   }
