@@ -1,9 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import BarChart from 'components/BarChart';
 
 class Student extends Component {
+  state = {
+    student: null
+  };
+
+  componentDidMount() {
+    const studentId = this.props.match.params.id;
+    const student = this.props.students[studentId];
+    this.setState({ student });
+  }
+
   render() {
-    return <div>Student Page</div>;
+    const { student } = this.state;
+    if (!student) {
+      return null;
+    }
+
+    return (
+      <div className="student-details">
+        <BarChart data={student} />
+      </div>
+    );
   }
 }
 
-export default Student;
+const mapStateToProps = ({ students }) => ({
+  students
+});
+
+export default connect(mapStateToProps)(Student);
