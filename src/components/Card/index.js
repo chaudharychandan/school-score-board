@@ -1,16 +1,9 @@
 import React from 'react';
+import { getTotalMarks } from 'utils';
 
 import './Card.css';
 
 const Card = ({ card }) => {
-  const getTotalMarks = (marks) => {
-    let total = 0;
-    for(let sub in marks) {
-      total += marks[sub];
-    }
-    return total;
-  }
-
   const { name, marks, rollNo } = card;
   return (
     <section className="card">

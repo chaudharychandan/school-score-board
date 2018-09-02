@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux';
 
-import students from 'reducers/students';
+import studentsReducer from 'reducers/students';
+import filterReducer from 'reducers/filter';
+import sortReducer from 'reducers/sort';
 
 export default combineReducers({
-  students
+  students: studentsReducer,
+  filter: filterReducer,
+  sort: sortReducer
 });

@@ -16,10 +16,16 @@ class Header extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.props) {
+      const { sort, filter } = nextProps;
+      this.setState({ sort, searchString: filter });
+    }
+  }
+
   onSearchChange = event => {
     const searchText = event.target.value || '';
-    this.setState({ searchString: searchText });
-    this.props.filterStudents();
+    this.props.filterStudents(searchText);
   }
 
   onSort = (type) => {
@@ -37,7 +43,7 @@ class Header extends Component {
         newSort.order = ASC;
     }
 
-    this.setState({ sort: newSort });
+    this.props.sortStudents(newSort);
   }
 
   render() {
@@ -63,4 +69,9 @@ class Header extends Component {
   }
 }
 
-export default connect(null, actions)(Header);
+const mapStateToProps = ({ sort, filter }) => ({
+    sort,
+    filter
+});
+
+export default connect(mapStateToProps, actions)(Header);
