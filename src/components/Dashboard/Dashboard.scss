@@ -1,0 +1,31 @@
+$dashboard-bg-color: #fff;
+
+.dashboard {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 48px;
+  background: $dashboard-bg-color;
+  .card-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .dashboard .card-container {
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .dashboard .card-container {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .dashboard .card-container {
+    width: 100%;
+  }
+}
