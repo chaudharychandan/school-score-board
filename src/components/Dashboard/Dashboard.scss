@@ -33,12 +33,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
+  height: 100vh;
   .loader {
     width: 96px;
     height: 96px;
-    border: 16px solid rgba(0, 0, 0, 0.2);
-    border-left: 16px solid #000000;
+    border: 16px solid rgba(0, 0, 0, 0.1);
+    border-left: 16px solid #000;
     border-radius: 50%;
     animation: loader 1s infinite linear;
   }

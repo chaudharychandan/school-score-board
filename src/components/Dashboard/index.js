@@ -16,6 +16,9 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.props.fetchStudents();
+  }
+
+  componentWillReceiveProps() {
     this.setState({ loading: false });
   }
 
@@ -89,10 +92,12 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = ({ students, sort, filter }) => ({
-  students,
-  sort,
-  filter
-});
+const mapStateToProps = ({ students, sort, filter }) => {
+  return {
+    students,
+    sort,
+    filter
+  }
+};
 
 export default connect(mapStateToProps, actions)(Dashboard);
