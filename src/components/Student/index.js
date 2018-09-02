@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import BarChart from 'components/BarChart';
+import Marksheet from 'components/Marksheet';
+
+import './Student.css';
 
 class Student extends Component {
   state = {
@@ -23,6 +26,7 @@ class Student extends Component {
     return (
       <div className="student-details">
         <BarChart data={student} />
+        <Marksheet data={student} />
       </div>
     );
   }
