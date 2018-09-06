@@ -7,7 +7,7 @@ import './App.css';
 
 export default () => {
   return (
-    <div>
+    <div className="app">
       <Route path="/" exact component={Dashboard} />
       <Route path="/:id" exact component={Student} />
     </div>
