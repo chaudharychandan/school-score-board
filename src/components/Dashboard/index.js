@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { fetchStudents } from 'actions';
 import { getTotalMarks } from 'utils';
 import { NAME, ASC } from 'constants/index';
 
@@ -15,7 +15,11 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchStudents();
+    if (Object.keys(this.props.students).length === 0) {
+      this.props.fetchStudents();
+    } else {
+      this.setState({ loading: false });
+    }
   }
 
   componentWillReceiveProps() {
@@ -104,4 +108,4 @@ const mapStateToProps = ({ students, sort, filter }) => {
   }
 };
 
-export default connect(mapStateToProps, actions)(Dashboard);
+export default connect(mapStateToProps, { fetchStudents })(Dashboard);
